@@ -1,5 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<h1>enter a url to get it shortened!</h1>
+<form method="post">
+    <input type="text" name="inputurl" placeholder="enter url...">
+    <button type="submit">Shorten!</button>
+</form>
+{% if output ==  null %}
+<h1>enter a url to shorten</h1>
+{% else %}
+<h1>here is the shortened url : {{output}}</h1>
+{% endif %}
 {% endblock %}
