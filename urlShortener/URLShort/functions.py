@@ -17,7 +17,7 @@ def CheckDbOrAdd(inputurl):
     #    id = len(allUrls) + 1
     #    UrlToShort(id, inputurl, outputurl).save()
     #else:
-    if QueryDB == []:
+    if not QueryDB:
         id = len(allUrls) + 1
         UrlToShort(id, inputurl, outputurl).save()
         # while inDB == False and notInDB == False:
