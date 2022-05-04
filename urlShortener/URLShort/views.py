@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
-from .models import UrlToShort
-from .functions import shortenurl
+#from .models import UrlToShort
+from .functions import CheckDbOrAdd
 
 
 # Create your views here.
@@ -13,11 +13,7 @@ def Home(request):
 def Shorten(request):
     if request.method == 'POST':
         inputurl = request.POST.get('inputurl')
-        outputurl = shortenurl(inputurl)
-        allUrls = UrlToShort.objects.all()
-        print("here is all instances of UrlToShort", allUrls)
-        id = len(allUrls) + 1
-        UrlToShort(id, inputurl, outputurl).save()
+        outputurl = CheckDbOrAdd(inputurl)
         urloutput = {'output': outputurl}
         return render(request, 'shorten.html', context = urloutput)
     else:
